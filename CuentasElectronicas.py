@@ -23,6 +23,27 @@ class Cuenta:
     def __repr__(self):
         return ("{} {}".format(self.titular, self.cantidad))
 
+class Cuenta_joven(Cuenta):
+    def __init__(self, titular, edad):
+        self.titular = titular
+        self.edad = edad
+        self.cantidad = 0
+        self.bonificacion = 0,10
+        
+    def esTitularValido(self):
+        if self.edad >= 18 and self.edad <= 25:
+            return True
+    
+    def retirar(self):
+        if self.esTitularValido():
+            Cuenta.retirar()
+        else:
+            print("Usted no puede retirar dinero, su cuenta no es valida")
+    
+    def mostrar(self):
+        print("Cuenta joven, {}, con una bonificacion de 10%".format(self.titular))
+
+
 ##Espacio de funciones
 def menu():
     print("*" *30)
